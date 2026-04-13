@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla de PDF</title>
+  <style>
+    /* Estilos CSS para la plantilla */
+    body {
+      font-family: Arial, sans-serif;
+      width: 8.27in; /* Ancho de la página en pulgadas */
+      height: 11.69in; /* Altura de la página en pulgadas */
+      margin: 0; /* Eliminar los márgenes predeterminados */
+      padding: 0; /* Eliminar el relleno predeterminado */
+      display: flex; /* Usar flexbox para centrar el contenido */
+      justify-content: center; /* Centrar horizontalmente */
+      align-items: center; /* Centrar verticalmente */
+    }
+    .container {
+      width: 100%; /* Ajustar al ancho de la página */
+      max-width: 600px; /* Establecer un ancho máximo */
+      margin: 0 auto; /* Centrar horizontalmente */
+      padding: 20px; /* Añadir relleno interno */
+      box-sizing: border-box; /* Incluir el relleno en el ancho total */
+    }
+    h1 {
+      color: #333;
+      text-align: center;
+    }
+    .datos {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div #contenidoHTML class="container">
+    <h1>Título del PDF</h1>
+    <div class="datos">
+      <p>Aquí van los datos del PDF...</p>
+    </div>
+  </div>
+</body>
+</html>
