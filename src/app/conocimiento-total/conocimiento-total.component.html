@@ -8,7 +8,7 @@
       <div class="fila">
         <div class="columna">
           <mat-form-field class="campo">
-            <mat-label>{{ languageTexts.conocimiento }}</mat-label>
+            <mat-label>{{ languageTexts.conocimientoplaceholder }}</mat-label>
             <input matInput placeholder="{{ languageTexts.conocimiento }}" name="conocimiento" required [(ngModel)]="conocimiento">
             <mat-error *ngIf="!conocimiento">{{ languageTexts.obligatorio }}</mat-error>
           </mat-form-field>

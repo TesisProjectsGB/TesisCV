@@ -97,7 +97,9 @@ interface LanguageText {
   skills: {},
   careers: any,
   carreraselect: string,
-  etiquetaBDP: string
+  etiquetaBDP: string,
+  conocimientoplaceholder: string,
+  descripcionplaceholder: string,
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -132,7 +134,7 @@ export class LanguageService {
       puesto: 'Position',
       empresa: 'Enterprise',
       actividades: 'Activities',
-      conocimiento: 'Write another skill',
+      conocimiento: 'Knowledge',
       logros: 'List three (3) major accomplishments',
       funciones: 'Indicate three (3) main functions',
       formulario: 'Form',
@@ -168,7 +170,7 @@ export class LanguageService {
       experiencialab: 'WORK EXPERIENCE',
       fecha: 'Date',
       otrosEstudios: 'OTHER STUDIES',
-      comentarios: 'Comments',
+      comentarios: 'Description',
       tiposcurso: 'COURSES, DIPLOMA, MASTERS, DOCTORATE, CERTIFICATION',
       estilos: 'Document Design',
       estilo1: 'A column',
@@ -234,7 +236,9 @@ export class LanguageService {
         { value: "Instrumentation and Control Engineering", viewValue: "Instrumentation and Control Engineering" }
       ],
       carreraselect: "Select the career that best matches your profile or area of specialization",
-      etiquetaBDP: "Database and programming"
+      etiquetaBDP: "Database and programming",
+      conocimientoplaceholder:"Write another skill",
+      descripcionplaceholder:"Write a description that highlights the best of your experience"
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -256,7 +260,7 @@ export class LanguageService {
       puesto: 'Puesto',
       empresa: 'Empresa',
       actividades: 'Actividades',
-      conocimiento: 'Escribe otro conocimiento',
+      conocimiento: 'Conocimiento',
       logros: 'Indique tres (3) principales logros',
       funciones: 'Indique tres (3) principales funciones',
       formulario: 'Formulario',
@@ -292,7 +296,7 @@ export class LanguageService {
       experiencialab: 'EXPERIENCIA LABORAL',
       fecha: 'Fecha',
       otrosEstudios: 'OTROS ESTUDIOS',
-      comentarios: 'Comentarios',
+      comentarios: 'Descripción',
       tiposcurso: 'CURSOS, DIPLOMADO, MAESTRIA, DOCTORADO, CERTIFICACIÓN',
       estilos: 'Diseño del documento',
       estilo1: 'Una columna',
@@ -358,7 +362,9 @@ export class LanguageService {
         { value: "Ingeniería en Instrumentación y Control", viewValue: "Ingeniería en Instrumentación y Control" }
       ],
       carreraselect: "Seleccione la carrera que más se acerque a su perfil o área de especialización",
-      etiquetaBDP: "Base de datos y programación"
+      etiquetaBDP: "Base de datos y programación",
+      conocimientoplaceholder:"Escribe otro conocimiento",
+      descripcionplaceholder:"Escribe una descripción que resalte lo mejor de tu experiencia"
     }
     // Agrega más idiomas según sea necesario
   };

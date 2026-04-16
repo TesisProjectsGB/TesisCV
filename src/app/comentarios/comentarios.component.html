@@ -1,17 +1,25 @@
 <div class="formulario-container" id="comentarios">
-  <h2 class="titulo">NOTAS O COMENTARIOS / NOTES OR COMMENTS</h2>
+  <!-- <h2 class="titulo">NOTAS O COMENTARIOS / NOTES OR COMMENTS</h2> -->
+  <h2 class="titulo">DESCRIPCIÓN CONCRETA DE TU EXPERIENCIA/A BRIEF DESCRIPTION OF YOUR EXPERIENCE</h2>
   <form autocomplete="on" class="formulario">  <!-- (ngSubmit)="verificarArreglos($event)" -->
     <div class="fila">
       <div class="columna">
         <mat-form-field class="campo">
-          <mat-label>{{ languageTexts.comentarios }}</mat-label>
+          <mat-label>{{ languageTexts.descripcionplaceholder }}</mat-label>
           <textarea
             matInput
             class="mi-textarea"
             placeholder="{{ languageTexts.comentarios }}"
             name="comentario"
             [(ngModel)]="comentario"
+            (input)="onInputChange()"
+            (keydown)="preventExtraWords($event)"
+            (paste)="handlePaste($event)"
+            required
           ></textarea>
+            <mat-hint align="end" class="hint-grande">
+              {{ wordCount }} / 100 palabras
+            </mat-hint>
         </mat-form-field>
       </div>
     </div>

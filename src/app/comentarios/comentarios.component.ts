@@ -38,7 +38,7 @@ export class ComentariosComponent implements OnInit {
   //Finaliza informacion para llenar word
 
   arregloLlenosInfo: { llenos: boolean, arregloVacio: string | null } = { llenos: true, arregloVacio: null };
-
+  wordCount = 0;
   constructor(private dataFormularioService: DataFormularioService, private languageService: LanguageService,public dialog: MatDialog) {
     this.selectedLanguage = this.languageService.language; // Establece el idioma predeterminado
     this.languageSubscription = this.languageService.languageTexts$.subscribe(languageTexts => {
@@ -151,9 +151,9 @@ export class ComentariosComponent implements OnInit {
     if (!this.dataFormularioService.tieneConocimientos) {
       return { llenos: false, arregloVacio: 'CONOCIMIENTO TECNICO / TECHNICIAL KNOWHOW' };
     }
-    // if (!this.dataFormularioService.tieneExperiencias) {
-    //   return { llenos: false, arregloVacio: 'EXPERIENCIA LABORAL / WORK EXPERIENCE' };
-    // }
+    if (!this.dataFormularioService.tieneExperiencias) {
+      return { llenos: false, arregloVacio: 'EXPERIENCIA LABORAL / WORK EXPERIENCE' };
+    }
     if (!this.dataFormularioService.tieneIdiomas) {
       return { llenos: false, arregloVacio: 'IDIOMAS / LANGUAGES' };
     }
@@ -162,6 +162,9 @@ export class ComentariosComponent implements OnInit {
     }
     if (!this.dataFormularioService.tieneSkills) {
       return { llenos: false, arregloVacio: 'HABILIDADES BLANDAS / SOFT SKILLS' };
+    }
+    if (!this.comentario) {
+      return { llenos: false, arregloVacio: 'DESCRIPCIÓN CONCRETA DE TU EXPERIENCIA/A BRIEF DESCRIPTION OF YOUR EXPERIENCE' };
     }
     return { llenos: true, arregloVacio: null };
   }
@@ -390,5 +393,48 @@ export class ComentariosComponent implements OnInit {
     const capitalizedMonth = month.charAt(0).toUpperCase() + month.slice(1); // Capitaliza la primera letra
     return `${capitalizedMonth} ${year}`;
   }
+  //Limitar a 100 palabras
+    getWords(text: string): string[] {
+      return text?.trim().split(/\s+/).filter(w => w.length) || [];
+    }
 
+    //  Se ejecuta SIEMPRE que el usuario escribe
+    onInputChange() {
+      const words = this.getWords(this.comentario);
+      this.wordCount = words.length;
+    }
+
+    //  Bloquea escribir más
+    preventExtraWords(event: KeyboardEvent) {
+      const text = this.comentario || '';
+      const words = this.getWords(text);
+
+      const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
+
+      // 👉 Si ya llegó a 100 palabras
+      if (words.length >= 100) {
+        // 👉 Solo bloquear si intenta agregar un espacio (nueva palabra)
+        if (event.key === ' ' && !allowedKeys.includes(event.key)) {
+          event.preventDefault(); // 🚫 bloquea nueva palabra
+        }
+      }
+    }
+
+    //  Controla pegado
+    handlePaste(event: ClipboardEvent) {
+      event.preventDefault();
+
+      const pasteData = event.clipboardData?.getData('text') || '';
+      const currentWords = this.getWords(this.comentario || '');
+      const pasteWords = this.getWords(pasteData);
+
+      const remaining = 100 - currentWords.length;
+      const allowedPaste = pasteWords.slice(0, remaining);
+
+      this.comentario = [...currentWords, ...allowedPaste].join(' ');
+
+      //  actualiza contador después de pegar
+      this.wordCount = this.getWords(this.comentario).length;
+    }
+  
 }

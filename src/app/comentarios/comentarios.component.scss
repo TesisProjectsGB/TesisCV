@@ -53,6 +53,10 @@
   color: black ; /* Cambia el color del texto a negro */
 }
 
+.hint-grande {
+  font-size: 16px; /* puedes subir a 18px o más */
+  font-weight: 500;
+}
   
   @media print {
     .imprimir {
