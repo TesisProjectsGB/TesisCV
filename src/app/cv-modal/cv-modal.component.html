@@ -1,6 +1,6 @@
 <div mat-dialog-content style="max-height: 80vh; overflow: auto;">
-  <app-pdf-one-content *ngIf="tipo === 'Diseño de una columna'"></app-pdf-one-content>
-  <app-pdf-two-content *ngIf="tipo === 'Diseño de dos columnas'"></app-pdf-two-content>
+  <app-pdf-one-content *ngIf="tipo === 'Diseño de una columna' && formato==='Formato 1'"></app-pdf-one-content>
+  <app-pdf-two-content *ngIf="tipo === 'Diseño de dos columnas' && formato==='Formato 1'"></app-pdf-two-content>
 </div>
 
 <mat-dialog-actions>

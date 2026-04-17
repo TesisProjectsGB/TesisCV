@@ -102,6 +102,9 @@ interface LanguageText {
   descripcionplaceholder: string,
   btnDescripcionLaboral: string,
   descripcionLaboralplaceholder: string,
+  formatos:string,
+  formato1:string,
+  // formato2:string,
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -242,7 +245,9 @@ export class LanguageService {
       conocimientoplaceholder:"Write another skill",
       descripcionplaceholder:"Write a description that highlights the best of your experience",
       btnDescripcionLaboral: "Add a description",
-      descripcionLaboralplaceholder: "Describe your duties, achievements, or responsibilities in this position"
+      descripcionLaboralplaceholder: "Describe your duties, achievements, or responsibilities in this position",
+      formatos:"Document format",
+      formato1:"Format 1",
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -370,7 +375,9 @@ export class LanguageService {
       conocimientoplaceholder:"Escribe otro conocimiento",
       descripcionplaceholder:"Escribe una descripción que resalte lo mejor de tu experiencia",
       btnDescripcionLaboral: "Agregar descripción",
-      descripcionLaboralplaceholder: "Describe tus funciones, logros o responsabilidades en este puesto"
+      descripcionLaboralplaceholder: "Describe tus funciones, logros o responsabilidades en este puesto",
+      formatos:"Formato del documento",
+      formato1:"Formato 1"
     }
     // Agrega más idiomas según sea necesario
   };

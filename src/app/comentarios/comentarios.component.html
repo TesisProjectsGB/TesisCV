@@ -24,25 +24,45 @@
       </div>
     </div>
     <h3 class="campo">{{ languageTexts.indicacion }}</h3>
-    <div class="lip">
-      <div>
-        <mat-form-field style="margin-right: 10px">
-          <mat-select
-            placeholder="{{ languageTexts.estilos }}"
-            name="disenoHoja"
-            [(ngModel)]="disenoHoja"
-          >
-            <mat-option value="Diseño de una columna">{{
-              languageTexts.estilo1
-            }}</mat-option>
-            <mat-option value="Diseño de dos columnas">{{
-              languageTexts.estilo2
-            }}</mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-      <!-- <button mat-raised-button class="btazul" type="submit">{{ languageTexts.generarDoc }}</button> -->
-    </div>
+
+<div class="row-fields">
+
+  <div class="lip">
+    <mat-form-field>
+      <mat-select
+        placeholder="{{ languageTexts.formatos }}"
+        name="formatoHoja"
+        [(ngModel)]="formatoHoja"
+      >
+        <mat-option value="Formato 1">
+          {{ languageTexts.formato1 }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="lip">
+    <mat-form-field style="margin-right: 10px">
+      <mat-select
+        placeholder="{{ languageTexts.estilos }}"
+        name="disenoHoja"
+        [(ngModel)]="disenoHoja"
+      >
+        <mat-option value="Diseño de una columna">
+          {{ languageTexts.estilo1 }}
+        </mat-option>
+        <mat-option value="Diseño de dos columnas">
+          {{ languageTexts.estilo2 }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>
+
+
+
+
   </form>
   <button mat-raised-button class="btazul" (click)="verificarArreglos($event)" style="margin-right: 10px;">Generar WORD</button>
   <button mat-raised-button class="btazul" (click)="openPdfViewer()">Visualizar documento / View document</button>

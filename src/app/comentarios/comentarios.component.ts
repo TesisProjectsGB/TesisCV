@@ -135,6 +135,7 @@ export class ComentariosComponent implements OnInit {
   private languageSubscription: Subscription;
   comentario: string = '';
   disenoHoja: string = 'Diseño de una columna';
+  formatoHoja: string = 'Formato 1';
 
   ngOnInit(): void {
   }
@@ -192,184 +193,369 @@ export class ComentariosComponent implements OnInit {
   }
 
   openPdfViewer() {
-    this.dialog.open(CvModalComponent,{data: { tipo: this.disenoHoja }});
+    this.dialog.open(CvModalComponent,{data: { tipo: this.disenoHoja,formato:this.formatoHoja }});
   }
 
 
-  downloadPdf() {
-    var templateUrl = 'assets/PlantillaUno.docx';
-    var conocimientosFormateados: any = [];
-    var habilidadesFormateados: any = [];
-    if(this.disenoHoja === 'Diseño de una columna'){
-      if((this.conocimientos.length > 0 && this.skills.length === 0) || (this.skills.length > 0 && this.conocimientos.length === 0)
-        || (this.conocimientos.length > 13 || this.skills.length > 13)){
-          if(this.selectedLanguage === 'es'){
-            templateUrl = 'assets/PlantillaUno.docx';
-          } else {
-            templateUrl = 'assets/PlantillaUnoEng.docx';
-          }
-           // Agrupar los conocimientos en objetos de 4 propiedades
-            for (let i = 0; i < this.conocimientos.length; i += 4) {
-              const bloque: any = {};
+  // downloadPdf() {
+  //   var templateUrl = 'assets/PlantillaUno.docx';
+  //   var conocimientosFormateados: any = [];
+  //   var habilidadesFormateados: any = [];
+  //   if(this.disenoHoja === 'Diseño de una columna'){
+  //     if((this.conocimientos.length > 0 && this.skills.length === 0) || (this.skills.length > 0 && this.conocimientos.length === 0)
+  //       || (this.conocimientos.length > 13 || this.skills.length > 13)){
+  //         if(this.selectedLanguage === 'es'){
+  //           templateUrl = 'assets/PlantillaUno.docx';
+  //         } else {
+  //           templateUrl = 'assets/PlantillaUnoEng.docx';
+  //         }
+  //          // Agrupar los conocimientos en objetos de 4 propiedades
+  //           for (let i = 0; i < this.conocimientos.length; i += 4) {
+  //             const bloque: any = {};
 
-              if (this.conocimientos[i]?.conocimiento) {
-                bloque.conocimiento1 = this.conocimientos[i].conocimiento;
-              }
-              if (this.conocimientos[i + 1]?.conocimiento) {
-                bloque.conocimiento2 = this.conocimientos[i + 1].conocimiento;
-              }
-              if (this.conocimientos[i + 2]?.conocimiento) {
-                bloque.conocimiento3 = this.conocimientos[i + 2].conocimiento;
-              }
-              if (this.conocimientos[i + 3]?.conocimiento) {
-                bloque.conocimiento4 = this.conocimientos[i + 3].conocimiento;
-              }
+  //             if (this.conocimientos[i]?.conocimiento) {
+  //               bloque.conocimiento1 = this.conocimientos[i].conocimiento;
+  //             }
+  //             if (this.conocimientos[i + 1]?.conocimiento) {
+  //               bloque.conocimiento2 = this.conocimientos[i + 1].conocimiento;
+  //             }
+  //             if (this.conocimientos[i + 2]?.conocimiento) {
+  //               bloque.conocimiento3 = this.conocimientos[i + 2].conocimiento;
+  //             }
+  //             if (this.conocimientos[i + 3]?.conocimiento) {
+  //               bloque.conocimiento4 = this.conocimientos[i + 3].conocimiento;
+  //             }
 
-              conocimientosFormateados.push(bloque);
-            }
-            // Fin agrupacion conocimientos
+  //             conocimientosFormateados.push(bloque);
+  //           }
+  //           // Fin agrupacion conocimientos
 
-            // Agrupar las skills en objetos de 4 propiedades
-            for (let i = 0; i < this.skills.length; i += 4) {
-              const bloque: any = {};
+  //           // Agrupar las skills en objetos de 4 propiedades
+  //           for (let i = 0; i < this.skills.length; i += 4) {
+  //             const bloque: any = {};
 
-              if (this.skills[i]?.skill) {
-                bloque.skill1 = this.skills[i].skill;
-              }
-              if (this.skills[i + 1]?.skill) {
-                bloque.skill2 = this.skills[i + 1].skill;
-              }
-              if (this.skills[i + 2]?.skill) {
-                bloque.skill3 = this.skills[i + 2].skill;
-              }
-              if (this.skills[i + 3]?.skill) {
-                bloque.skill4 = this.skills[i + 3].skill;
-              }
+  //             if (this.skills[i]?.skill) {
+  //               bloque.skill1 = this.skills[i].skill;
+  //             }
+  //             if (this.skills[i + 1]?.skill) {
+  //               bloque.skill2 = this.skills[i + 1].skill;
+  //             }
+  //             if (this.skills[i + 2]?.skill) {
+  //               bloque.skill3 = this.skills[i + 2].skill;
+  //             }
+  //             if (this.skills[i + 3]?.skill) {
+  //               bloque.skill4 = this.skills[i + 3].skill;
+  //             }
 
-              habilidadesFormateados.push(bloque);
-            }
-            // Fin agrupacion skills
-      } else if (this.conocimientos.length <14 && this.skills.length < 14 && this.conocimientos.length > 0 && this.skills.length > 0){
-        if(this.selectedLanguage === 'es'){
-          templateUrl = 'assets/PlantillaUnoColumnas.docx';
-        } else {
-          templateUrl = 'assets/PlantillaUnoColumnasEng.docx';
+  //             habilidadesFormateados.push(bloque);
+  //           }
+  //           // Fin agrupacion skills
+  //     } else if (this.conocimientos.length <14 && this.skills.length < 14 && this.conocimientos.length > 0 && this.skills.length > 0){
+  //       if(this.selectedLanguage === 'es'){
+  //         templateUrl = 'assets/PlantillaUnoColumnas.docx';
+  //       } else {
+  //         templateUrl = 'assets/PlantillaUnoColumnasEng.docx';
+  //       }
+  //       habilidadesFormateados = [];
+  //       habilidadesFormateados = this.skills;
+  //       conocimientosFormateados = [];
+  //       conocimientosFormateados = this.conocimientos;
+  //     }
+  //   } else {
+  //     if(this.selectedLanguage === 'es'){
+  //       templateUrl = 'assets/PlantillaDos.docx';
+  //     } else {
+  //       templateUrl = 'assets/PlantillaDosEng.docx';
+  //     }
+  //     habilidadesFormateados = [];
+  //     habilidadesFormateados = this.skills;
+  //     conocimientosFormateados = [];
+  //     conocimientosFormateados = this.conocimientos;
+  //   }
+
+
+  //   fetch(templateUrl)
+  //     .then(response => {
+  //       if (!response.ok) {
+  //         throw new Error('Error al cargar el archivo DOCX');
+  //       }
+  //       return response.arrayBuffer();
+  //     })
+  //     .then(data => {
+  //       const zip = new PizZip(data); // Cargar el archivo DOCX en PizZip
+  //       const doc = new Docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
+
+  //       //Actualizar estudios
+  //       const estudiosNew = []
+  //       for (let i = 0; i < this.estudios.length; i++) {
+  //         const bloque: any = {};
+  //         bloque.universidad = this.estudios[i].universidad;
+  //         bloque.carrera = this.estudios[i].carrera;
+  //         bloque.fechaIni = this.estudios[i].fechaIni.getFullYear();
+  //         bloque.generacion = (this.isToday(this.estudios[i].generacion) ? this.languageTexts.actualidad : this.estudios[i].generacion.getFullYear());
+  //         estudiosNew.push(bloque)
+  //       }
+  //       // Fin actualizar estudios
+
+  //       // Actualizar experiencias
+  //       const experienciasNew = []
+  //       for (let i = 0; i < this.experiencias.length; i++) {
+  //         const bloque: any = {};
+  //         bloque.puesto = this.experiencias[i].puesto;
+  //         bloque.empresa = this.experiencias[i].empresa;
+  //         bloque.descripcion = this.experiencias[i].descripcion;
+  //         bloque.periodo = (this.experiencias[i].fechaIni ? this.capitalizeFirstLetter(this.experiencias[i].fechaIni) : '')
+  //         + ' - '+ (this.isToday(this.experiencias[i].fechaFin) ? this.languageTexts.actualidad :  this.experiencias[i].fechaFin ? this.capitalizeFirstLetter(this.experiencias[i].fechaFin) : '');
+  //         experienciasNew.push(bloque)
+  //       }
+  //       //Fin actualizar experiencias
+
+  //       // Actualizar cursos
+  //       const cursosNew = []
+  //       for (let i = 0; i < this.cursos.length; i++) {
+  //         const bloque: any = {};
+  //         bloque.nombre = this.cursos[i].nombre;
+  //         bloque.organizacion = this.cursos[i].organizacion;
+  //         bloque.descripcion = this.cursos[i].descripcion;
+  //         bloque.entidad = this.cursos[i].entidad;
+  //         bloque.tiempoEstudio = this.cursos[i].tiempoEstudio;
+  //         bloque.periodo = (this.cursos[i].fechaIni ? this.capitalizeFirstLetter(this.cursos[i].fechaIni) : '')
+  //         + ' - '+ (this.isToday(this.cursos[i].fechaFin) ? this.languageTexts.actualidad :  this.cursos[i].fechaFin ? this.capitalizeFirstLetter(this.cursos[i].fechaFin) : '');
+  //         cursosNew.push(bloque)
+  //       }
+  //       // Fin actualizar cursos
+
+  //       // Datos a insertar en la plantilla
+  //       const datos = {
+  //         EtNom: this.apellido + ' ' + this.nombre,
+  //         EtNa: this.nacionalidad,
+  //         EtId: this.idiomas,
+  //         EtRe: this.ciudad+ ', '+this.pais,
+  //         EtEd: this.edad,
+  //         EtTiempoExp: this.tiempoExperiencia,
+  //         estudios: estudiosNew,
+  //         conocimientos:  conocimientosFormateados,
+  //         habilidades: habilidadesFormateados,
+  //         experiencias: experienciasNew,
+  //         cursos: cursosNew,
+  //         comentarios: this.comentarios,
+  //         tieneConocimientos: this.conocimientos.length > 0,
+  //         tieneSkills: this.skills.length > 0,
+  //         tieneCursos: this.cursos.length > 0,
+  //         tieneComentarios: this.comentarios !== '' && this.comentarios !== undefined
+  //       };
+
+  //       // Establecer los datos en la plantilla
+  //       doc.setData(datos);
+
+  //       try {
+  //         // Intentar renderizar el documento
+  //         doc.render();
+  //       } catch (error: any) {
+  //         console.error('Error al procesar la plantilla DOCX:', error);
+  //         if (error.properties && error.properties.errors) {
+  //           error.properties.errors.forEach((err: any) => {
+  //             console.error('Error específico en placeholder:', err);
+  //           });
+  //         }
+  //         return;
+  //       }
+
+  //       // Obtener el archivo generado y descargarlo
+  //       const docxContent = doc.getZip().generate({ type: 'blob' });
+  //       const blob = new Blob([docxContent], {
+  //         type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+  //       });
+  //       saveAs(blob, 'Curriculum_Vitae.docx');
+
+  //     })
+  //     .catch(error => {
+  //       console.error('Error al cargar la plantilla DOCX:', error);
+  //     });
+  // }
+  async downloadPdf() {
+  try {
+    const templateUrl = this.getTemplateUrl();
+
+    const {
+      conocimientosFormateados,
+      habilidadesFormateadas
+    } = this.formatSkillsAndKnowledge();
+
+    const datos = this.buildData(
+      conocimientosFormateados,
+      habilidadesFormateadas
+    );
+
+    const blob = await this.generateDoc(templateUrl, datos);
+
+    saveAs(blob, 'Curriculum_Vitae.docx');
+
+  } catch (error) {
+    console.error('Error general:', error);
+  }
+  }
+
+  getTemplateUrl(): string {
+    const isES = this.selectedLanguage === 'es';
+
+    if (this.disenoHoja === 'Diseño de una columna') {
+      if (this.formatoHoja === 'Formato 1') {
+        return isES
+          ? 'assets/PlantillaUno.docx'
+          : 'assets/PlantillaUnoEng.docx';
+      }
+
+      // if (this.formatoHoja === 'Formato 2') {
+      //   return isES
+      //     ? 'assets/PlantillaUnoFormato2.docx'
+      //     : 'assets/PlantillaUnoFormato2Eng.docx';
+      // }
+    }else{
+      if (this.formatoHoja === 'Formato 1') {
+        return isES
+          ? 'assets/PlantillaDos.docx'
+          : 'assets/PlantillaDosEng.docx';
+      }
+    }
+    
+    // Diseño dos columnas
+    return isES
+      ? 'assets/PlantillaDos.docx'
+      : 'assets/PlantillaDosEng.docx';
+  }
+  formatSkillsAndKnowledge() {
+    const conocimientosFormateados = this.groupByFour(
+      this.conocimientos,
+      'conocimiento'
+    );
+
+    const habilidadesFormateadas = this.groupByFour(
+      this.skills,
+      'skill'
+    );
+
+    return { conocimientosFormateados, habilidadesFormateadas };
+  }
+
+  groupByFour(array: any[], key: string) {
+    const result = [];
+
+    for (let i = 0; i < array.length; i += 4) {
+      const bloque: any = {};
+
+      for (let j = 0; j < 4; j++) {
+        if (array[i + j]?.[key]) {
+          bloque[`${key}${j + 1}`] = array[i + j][key];
         }
-        habilidadesFormateados = [];
-        habilidadesFormateados = this.skills;
-        conocimientosFormateados = [];
-        conocimientosFormateados = this.conocimientos;
       }
-    } else {
-      if(this.selectedLanguage === 'es'){
-        templateUrl = 'assets/PlantillaDos.docx';
-      } else {
-        templateUrl = 'assets/PlantillaDosEng.docx';
-      }
-      habilidadesFormateados = [];
-      habilidadesFormateados = this.skills;
-      conocimientosFormateados = [];
-      conocimientosFormateados = this.conocimientos;
+
+      result.push(bloque);
     }
 
+    return result;
+  }
 
-    fetch(templateUrl)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Error al cargar el archivo DOCX');
-        }
-        return response.arrayBuffer();
-      })
-      .then(data => {
-        const zip = new PizZip(data); // Cargar el archivo DOCX en PizZip
-        const doc = new Docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
+  buildData(conocimientos: any, habilidades: any) {
+  return {
+    EtNom: this.apellido + ' ' + this.nombre,
+    EtNa: this.nacionalidad,
+    EtId: this.idiomas,
+    EtRe: this.ciudad + ', ' + this.pais,
+    EtEd: this.edad,
+    EtTiempoExp: this.tiempoExperiencia,
 
-        //Actualizar estudios
-        const estudiosNew = []
-        for (let i = 0; i < this.estudios.length; i++) {
-          const bloque: any = {};
-          bloque.universidad = this.estudios[i].universidad;
-          bloque.carrera = this.estudios[i].carrera;
-          bloque.fechaIni = this.estudios[i].fechaIni.getFullYear();
-          bloque.generacion = (this.isToday(this.estudios[i].generacion) ? this.languageTexts.actualidad : this.estudios[i].generacion.getFullYear());
-          estudiosNew.push(bloque)
-        }
-        // Fin actualizar estudios
+    estudios: this.formatEstudios(),
+    experiencias: this.formatExperiencias(),
+    cursos: this.formatCursos(),
 
-        // Actualizar experiencias
-        const experienciasNew = []
-        for (let i = 0; i < this.experiencias.length; i++) {
-          const bloque: any = {};
-          bloque.puesto = this.experiencias[i].puesto;
-          bloque.empresa = this.experiencias[i].empresa;
-          bloque.descripcion = this.experiencias[i].descripcion;
-          bloque.periodo = (this.experiencias[i].fechaIni ? this.capitalizeFirstLetter(this.experiencias[i].fechaIni) : '')
-          + ' - '+ (this.isToday(this.experiencias[i].fechaFin) ? this.languageTexts.actualidad :  this.experiencias[i].fechaFin ? this.capitalizeFirstLetter(this.experiencias[i].fechaFin) : '');
-          experienciasNew.push(bloque)
-        }
-        //Fin actualizar experiencias
+    conocimientos,
+    habilidades,
 
-        // Actualizar cursos
-        const cursosNew = []
-        for (let i = 0; i < this.cursos.length; i++) {
-          const bloque: any = {};
-          bloque.nombre = this.cursos[i].nombre;
-          bloque.organizacion = this.cursos[i].organizacion;
-          bloque.descripcion = this.cursos[i].descripcion;
-          bloque.entidad = this.cursos[i].entidad;
-          bloque.tiempoEstudio = this.cursos[i].tiempoEstudio;
-          bloque.periodo = (this.cursos[i].fechaIni ? this.capitalizeFirstLetter(this.cursos[i].fechaIni) : '')
-          + ' - '+ (this.isToday(this.cursos[i].fechaFin) ? this.languageTexts.actualidad :  this.cursos[i].fechaFin ? this.capitalizeFirstLetter(this.cursos[i].fechaFin) : '');
-          cursosNew.push(bloque)
-        }
-        // Fin actualizar cursos
+    comentarios: this.comentarios,
 
-        // Datos a insertar en la plantilla
-        const datos = {
-          EtNom: this.apellido + ' ' + this.nombre,
-          EtNa: this.nacionalidad,
-          EtId: this.idiomas,
-          EtRe: this.ciudad+ ', '+this.pais,
-          EtEd: this.edad,
-          EtTiempoExp: this.tiempoExperiencia,
-          estudios: estudiosNew,
-          conocimientos:  conocimientosFormateados,
-          habilidades: habilidadesFormateados,
-          experiencias: experienciasNew,
-          cursos: cursosNew,
-          comentarios: this.comentarios,
-          tieneConocimientos: this.conocimientos.length > 0,
-          tieneSkills: this.skills.length > 0,
-          tieneCursos: this.cursos.length > 0,
-          tieneComentarios: this.comentarios !== '' && this.comentarios !== undefined
-        };
+    tieneConocimientos: this.conocimientos.length > 0,
+    tieneSkills: this.skills.length > 0,
+    tieneCursos: this.cursos.length > 0,
+    tieneComentarios: !!this.comentarios
+  };
+  }
+  
+  formatEstudios() {
+    return this.estudios.map(e => ({
+      universidad: e.universidad,
+      carrera: e.carrera,
+      fechaIni: e.fechaIni.getFullYear(),
+      generacion: this.isToday(e.generacion)
+        ? this.languageTexts.actualidad
+        : e.generacion.getFullYear()
+    }));
+  }
 
-        // Establecer los datos en la plantilla
-        doc.setData(datos);
+    
+  formatExperiencias() {
+    return this.experiencias.map(e => {
+      const fechaInicio = e.fechaIni
+        ? this.capitalizeFirstLetter(e.fechaIni)
+        : '';
 
-        try {
-          // Intentar renderizar el documento
-          doc.render();
-        } catch (error: any) {
-          console.error('Error al procesar la plantilla DOCX:', error);
-          if (error.properties && error.properties.errors) {
-            error.properties.errors.forEach((err: any) => {
-              console.error('Error específico en placeholder:', err);
-            });
-          }
-          return;
-        }
+      const fechaFin = this.isToday(e.fechaFin)
+        ? this.languageTexts.actualidad
+        : e.fechaFin
+        ? this.capitalizeFirstLetter(e.fechaFin)
+        : '';
 
-        // Obtener el archivo generado y descargarlo
-        const docxContent = doc.getZip().generate({ type: 'blob' });
-        const blob = new Blob([docxContent], {
-          type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-        });
-        saveAs(blob, 'Curriculum_Vitae.docx');
+      return {
+        puesto: e.puesto,
+        empresa: e.empresa,
+        descripcion: e.descripcion,
+        periodo: `${fechaInicio} - ${fechaFin}`
+      };
+    });
+  }
 
-      })
-      .catch(error => {
-        console.error('Error al cargar la plantilla DOCX:', error);
+  formatCursos() {
+    return this.cursos.map(c => {
+      const fechaInicio = c.fechaIni
+        ? this.capitalizeFirstLetter(c.fechaIni)
+        : '';
+
+      const fechaFin = this.isToday(c.fechaFin)
+        ? this.languageTexts.actualidad
+        : c.fechaFin
+        ? this.capitalizeFirstLetter(c.fechaFin)
+        : '';
+
+      return {
+        nombre: c.nombre,
+        organizacion: c.organizacion,
+        descripcion: c.descripcion,
+        entidad: c.entidad,
+        tiempoEstudio: c.tiempoEstudio,
+        periodo: `${fechaInicio} - ${fechaFin}`
+      };
+    });
+  }
+
+  async generateDoc(templateUrl: string, datos: any) {
+      const response = await fetch(templateUrl);
+      if (!response.ok) throw new Error('Error cargando plantilla');
+
+      const data = await response.arrayBuffer();
+
+      const zip = new PizZip(data);
+      const doc = new Docxtemplater(zip, {
+        paragraphLoop: true,
+        linebreaks: true
+      });
+
+      doc.setData(datos);
+      doc.render();
+
+      const blob = doc.getZip().generate({ type: 'blob' });
+
+      return new Blob([blob], {
+        type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
       });
   }
 
