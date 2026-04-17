@@ -50,7 +50,19 @@
             </span>
           </div>
           <div>
-            <span>{{ experiencia.descripcion }}</span>
+            <!-- <span>{{ experiencia.descripcion }}</span> -->
+            <div *ngIf="experiencia.descripciones.length > 0" class="lista-descripciones">
+              <ul>
+                <li *ngFor="let desc of experiencia.descripciones; let i = index" class="item-descripcion">
+                  
+                  <span class="texto-descripcion">
+                     {{ desc }}
+                  </span>
+                </li>
+              </ul>
+            </div>
+
+
           </div>
         </div>
       </div>

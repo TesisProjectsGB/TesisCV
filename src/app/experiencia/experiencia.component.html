@@ -47,7 +47,7 @@
           <span style="padding-right: 5px;">{{ languageTexts.fechaActual }}</span>
           <button mat-button matSuffix type="button" (click)="setFechaActual()">{{ languageTexts.actual }}</button>
         </div>
-
+<!-- 
         <div class="columna-completa">
           <mat-form-field class="campo">
             <mat-label>{{ languageTexts.descripcionInd }}</mat-label>
@@ -56,35 +56,63 @@
               {{ languageTexts.obligatorio }}
             </mat-error>
           </mat-form-field>
-        </div>
-
-        <!-- <div class="columna">
-          <mat-form-field class="campo">
-            <mat-chip-list #chipList required>
-              <mat-chip *ngFor="let logro of logros" [selectable]="selectable" [removable]="removable" (removed)="remove(logro)">
-                {{logro.nombreLogro}}
-                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-              </mat-chip>
-              <input placeholder="{{ languageTexts.logros }}" required [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
-            </mat-chip-list>
-            <mat-error *ngIf="logros.length === 0">{{ languageTexts.obligatorio }}</mat-error>
-          </mat-form-field>
-        </div>
-
-        <div class="columna">
-          <mat-form-field class="campo">
-            <mat-chip-list #chipList2 required>
-              <mat-chip *ngFor="let funcion of funcionesArray" [selectable]="selectableFun" [removable]="removableFun" (removed)="removeFunciones(funcion)">
-                {{funcion.nombreFuncion}}
-                <mat-icon matChipRemove *ngIf="removableFun">cancel</mat-icon>
-              </mat-chip>
-              <input placeholder="{{ languageTexts.funciones }}" [matChipInputFor]="chipList2" [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlurFun" (matChipInputTokenEnd)="addFunciones($event)">
-            </mat-chip-list>
-            <mat-error *ngIf="funcionesArray.length === 0">{{ languageTexts.obligatorio }}</mat-error>
-          </mat-form-field>
         </div> -->
-      </div>
+      <div class="columna-completa">
 
+        <!-- TEXTAREA BONITO -->
+        <mat-form-field class="campo-full" appearance="outline">
+          <mat-label>{{languageTexts.descripcionInd}}</mat-label>
+          <textarea
+            matInput
+            rows="4"
+            placeholder="{{languageTexts.descripcion}}"
+            [(ngModel)]="descripcion"
+            name="descripcion"
+            required
+          ></textarea>
+          <mat-hint class="hint-grande">
+           {{languageTexts.descripcionLaboralplaceholder}}
+          </mat-hint>
+        </mat-form-field>
+
+        <!-- BOTÓN DE AGREGAR -->
+        <div class="contenedor-boton">
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="agregarDescripcion()"
+          >
+            + {{languageTexts.btnDescripcionLaboral}}
+          </button>
+        </div>
+
+        <!-- LISTA DE DESCRIPCIONES -->
+        <div *ngIf="descripciones.length > 0" class="lista-descripciones">
+
+          <div class="titulo-lista">
+            Descripciones agregadas
+          </div>
+
+          <ul>
+            <li *ngFor="let desc of descripciones; let i = index" class="item-descripcion">
+              
+              <span class="texto-descripcion">
+                • {{ desc }}
+              </span>
+
+              <button mat-icon-button color="warn" (click)="eliminarDescripcion(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+
+            </li>
+          </ul>
+
+        </div>
+
+
+      </div>
+      </div>
       <button mat-raised-button color="primary" class="boton" type="submit">{{ languageTexts.guardarExp }}</button>
     </form>
 
@@ -114,27 +142,16 @@
 
           <ng-container matColumnDef="descripcion">
             <th mat-header-cell *matHeaderCellDef style="width: 200px;"> {{ languageTexts.descripcion }} </th>
-            <td mat-cell *matCellDef="let element" style="width: 200px;"> {{ element.descripcion }} </td>
-          </ng-container>
-
-
-          <!-- <ng-container matColumnDef="actividades">
-            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.logroet }} </th>
-            <td mat-cell *matCellDef="let element">
+            <!-- <td mat-cell *matCellDef="let element" style="width: 200px;"> {{ element.descripcion }} </td> -->
+             <td mat-cell *matCellDef="let element">
               <ul>
-                <li *ngFor="let actividad of element.actividades">{{ actividad }}</li>
+                <li *ngFor="let desc of element.descripciones">
+                  {{ desc }}
+                </li>
               </ul>
             </td>
           </ng-container>
 
-          <ng-container matColumnDef="funciones">
-            <th mat-header-cell *matHeaderCellDef> {{ languageTexts.funcionet }} </th>
-            <td mat-cell *matCellDef="let element">
-              <ul>
-                <li *ngFor="let funcion of element.funciones">{{ funcion }}</li>
-              </ul>
-            </td>
-          </ng-container> -->
 
           <!-- Columna para el botón de eliminar -->
           <ng-container matColumnDef="eliminar">

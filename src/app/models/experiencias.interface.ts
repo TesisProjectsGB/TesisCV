@@ -5,5 +5,5 @@ export interface PeriodicElement {
     fechaFin: Date;
     actividades: string[];
     funciones: string[];
-    descripcion: string;
+    descripciones: string[];
   }

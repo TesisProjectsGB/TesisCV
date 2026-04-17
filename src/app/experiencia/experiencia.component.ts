@@ -21,6 +21,7 @@ export class ExperienciaComponent implements OnInit {
   puesto: string = '';
   empresa: string = '';
   descripcion: string = '';
+  descripciones: string[] = [];
   fechaInicio: Date | null = null;
   fechaFin: Date | null = null;
   actividades: string[] = [];
@@ -54,7 +55,7 @@ export class ExperienciaComponent implements OnInit {
   }
 
   guardarExperiencia(form: NgForm): void {
-    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.descripcion ) { // && this.logros.length !== 0 && this.funcionesArray.length !== 0
+    if (this.puesto && this.empresa && this.fechaInicio && this.fechaFin && this.descripciones.length > 0) { // && this.logros.length !== 0 && this.funcionesArray.length !== 0
       const nuevaExperiencia: PeriodicElement = {
         puesto: this.puesto,
         empresa: this.empresa,
@@ -62,7 +63,8 @@ export class ExperienciaComponent implements OnInit {
         fechaFin: this.fechaFin,
         actividades: this.actividades,
         funciones: this.funciones,
-        descripcion: this.descripcion = this.descripcion.replace(/\s+/g, ' ').trim()
+        // descripcion: this.descripcion = this.descripcion.replace(/\s+/g, ' ').trim()
+        descripciones: [...this.descripciones]
       };
 
       this.dataSource.data.push(nuevaExperiencia);
@@ -93,6 +95,8 @@ export class ExperienciaComponent implements OnInit {
     this.funciones = [];
     this.logros = [];
     this.funcionesArray = [];
+    this.descripcion = '';
+    this.descripciones = []; //  importante
     form.resetForm();
   }
 
@@ -149,5 +153,16 @@ export class ExperienciaComponent implements OnInit {
       this.funcionesArray.splice(index, 1);
       this.funciones.splice(index, 1);
     }
+  }
+
+  agregarDescripcion() {
+    if (this.descripcion && this.descripcion.trim() !== '') {
+      this.descripciones.push(this.descripcion.trim());
+      this.descripcion = '';
+    }
+  }
+  
+  eliminarDescripcion(index: number) {
+  this.descripciones.splice(index, 1);
   }
 }

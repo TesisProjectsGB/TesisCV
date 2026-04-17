@@ -34,6 +34,7 @@
     <div class="detail">
       <span>{{ languageTexts.edad }}: {{ edad }}</span>
     </div>
+    <!-- Descripcion de experiencia -->
   </div>
 
   <!-- Estudios Cursados -->
@@ -126,7 +127,19 @@
         </span>
       </div>
       <div>
-        <span>{{ experiencia.descripcion }}</span>
+        <!-- <span>{{ experiencia.descripcion }}</span> -->
+        <!-- LISTA DE DESCRIPCIONES -->
+        <div *ngIf="experiencia.descripciones.length > 0" class="lista-descripciones">
+          <ul>
+            <li *ngFor="let desc of experiencia.descripciones; let i = index" class="item-descripcion">
+              
+              <span class="texto-descripcion">
+                • {{ desc }}
+              </span>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
   </div>
@@ -160,10 +173,10 @@
   </div>
 
    <!-- COMENTARIOS -->
-   <div class="section pdf-section">
+   <!-- <div class="section pdf-section">
     <h4>{{ languageTexts.comentariotTitulo }}</h4>
     <div class="detail">
       <span>{{ comentarios }}</span>
     </div>
-  </div>
+  </div> -->
 </div>

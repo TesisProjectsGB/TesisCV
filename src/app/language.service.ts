@@ -100,6 +100,8 @@ interface LanguageText {
   etiquetaBDP: string,
   conocimientoplaceholder: string,
   descripcionplaceholder: string,
+  btnDescripcionLaboral: string,
+  descripcionLaboralplaceholder: string,
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -238,7 +240,9 @@ export class LanguageService {
       carreraselect: "Select the career that best matches your profile or area of specialization",
       etiquetaBDP: "Database and programming",
       conocimientoplaceholder:"Write another skill",
-      descripcionplaceholder:"Write a description that highlights the best of your experience"
+      descripcionplaceholder:"Write a description that highlights the best of your experience",
+      btnDescripcionLaboral: "Add a description",
+      descripcionLaboralplaceholder: "Describe your duties, achievements, or responsibilities in this position"
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -364,7 +368,9 @@ export class LanguageService {
       carreraselect: "Seleccione la carrera que más se acerque a su perfil o área de especialización",
       etiquetaBDP: "Base de datos y programación",
       conocimientoplaceholder:"Escribe otro conocimiento",
-      descripcionplaceholder:"Escribe una descripción que resalte lo mejor de tu experiencia"
+      descripcionplaceholder:"Escribe una descripción que resalte lo mejor de tu experiencia",
+      btnDescripcionLaboral: "Agregar descripción",
+      descripcionLaboralplaceholder: "Describe tus funciones, logros o responsabilidades en este puesto"
     }
     // Agrega más idiomas según sea necesario
   };
