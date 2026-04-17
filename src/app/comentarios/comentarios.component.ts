@@ -395,6 +395,7 @@ export class ComentariosComponent implements OnInit {
   }
   //Limitar a 100 palabras
     getWords(text: string): string[] {
+      this.dataFormularioService.guardarComentarios(text);
       return text?.trim().split(/\s+/).filter(w => w.length) || [];
     }
 
@@ -411,9 +412,9 @@ export class ComentariosComponent implements OnInit {
 
       const allowedKeys = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'];
 
-      // 👉 Si ya llegó a 100 palabras
+      //  Si ya llegó a 100 palabras
       if (words.length >= 100) {
-        // 👉 Solo bloquear si intenta agregar un espacio (nueva palabra)
+        //  Solo bloquear si intenta agregar un espacio (nueva palabra)
         if (event.key === ' ' && !allowedKeys.includes(event.key)) {
           event.preventDefault(); // 🚫 bloquea nueva palabra
         }

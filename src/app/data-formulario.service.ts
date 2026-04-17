@@ -57,7 +57,7 @@ export class DataFormularioService {
   tieneIdiomas: boolean = false;
   tienePersonal: boolean = false;
   tieneSkills: boolean = false;
-
+  tieneComentarios:boolean = false;
   selectedLanguage: string = 'es';
   languageTexts: any;
   private languageSubscription: Subscription;
@@ -90,6 +90,7 @@ export class DataFormularioService {
       this.tieneCursos = datos.tieneCursos;
       this.tieneIdiomas = datos.tieneIdiomas;
       this.tienePersonal = datos.tienePersonal;
+      this.tieneComentarios=datos.comentarios;
     }
   }
 
@@ -106,7 +107,11 @@ export class DataFormularioService {
     // }
 
   }
-
+  guardarComentarios(comentarios: string){
+    this.comentarios = comentarios;
+    this.sendComentarios$.next(this.comentarios);
+    this.actualizarEstadoArreglos();
+  }
   guardarPersonal(nombre: string, apellidos: string, nacionalidad: string, edad: number, ciudad: string, pais: string, tiempoExperiencia: number) {
     this.nombre = nombre;
     this.apellidos = apellidos;
@@ -187,6 +192,7 @@ export class DataFormularioService {
     this.tieneCursos = this.cursos.length > 0;
     this.tieneIdiomas = this.idiomas.length > 0;
     this.tieneSkills = this.skills.length > 0;
+    this.tieneComentarios= this.conocimientos?true:false;
 
     if(this.nombre != "" && this.apellidos != "" && this.nacionalidad != "" && this.ciudad != "" && this.pais != "" && this.edad > 0 && this.tiempoExperiencia > 0) {
       this.tienePersonal = true;
