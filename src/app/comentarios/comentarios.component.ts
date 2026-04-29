@@ -380,7 +380,12 @@ export class ComentariosComponent implements OnInit {
     const {
       conocimientosFormateados,
       habilidadesFormateadas
-    } = this.formatSkillsAndKnowledge();
+    } = this.disenoHoja === 'Diseño de una columna'
+      ? this.formatSkillsAndKnowledge()
+      : {
+          conocimientosFormateados: this.conocimientos,
+          habilidadesFormateadas: this.skills
+        };
 
     const datos = this.buildData(
       conocimientosFormateados,

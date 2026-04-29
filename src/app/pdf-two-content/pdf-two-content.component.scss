@@ -9,7 +9,7 @@
   padding-right: 0.5in;
   padding-bottom: 0.5in;
   box-sizing: border-box;
-  font-family: Arial, sans-serif; /* Fuente predeterminada */
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;/* Fuente predeterminada */
   background-color: #fff; /* Fondo blanco */
   display: flex;
   flex-direction: column;
@@ -49,13 +49,14 @@
 
 .section h4 {
   color: #1d40cc;
-  font-family: "Merriweather", serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-weight: bold;
   font-size: 15px;
   margin-bottom: 0.5rem;
+  font-style: italic;
 }
 
-.detail,
+
 .experience,
 .estudio {
   margin-bottom: 1rem;
@@ -68,4 +69,26 @@ ul {
 
 ul li {
   margin-bottom: 0.3rem;
+}
+
+.detail.name-detail {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.detail.yearsE-detail {
+  font-weight: bold;
+}
+
+.detail.idiomas-detail {
+  display: flex;
+}
+
+.detail.idiomas-detail ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Elimina los puntos de la lista */
+}
+.detail{
+    margin-bottom: 5px;
 }
