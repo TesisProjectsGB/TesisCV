@@ -25,8 +25,11 @@
         <li *ngFor="let idioma of idiomas">{{ idioma.idioma }} </li>
       </ul>
     </div>
-    <div class="detail">
+    <div *ngIf="languageTexts.edad==='Edad'" class="detail">
       <span>{{ edad }} {{languageTexts.year}}, {{ ciudad || languageTexts.ciudad }}, {{pais || languageTexts.pais}}.</span>
+    </div>
+    <div *ngIf="languageTexts.edad==='Age'" class="detail">
+      <span>{{languageTexts.edad}}:{{ edad }}, {{ ciudad || languageTexts.ciudad }}, {{pais || languageTexts.pais}}.</span>
     </div>
     <br>
     <!-- DESCRIPCIÓN CONCRETA DE TU EXPERIENCIA -->
