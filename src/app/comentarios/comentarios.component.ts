@@ -29,7 +29,7 @@ export class ComentariosComponent implements OnInit {
   estudios = [
     { universidad: 'UNAM', carrera: 'Ingeniería', fechaIni: new Date(2010, 1, 1), generacion: new Date(2014, 1, 1) }
   ];
-  experiencias = [{puesto: 'UNAM', empresa: 'Ingeniería',descripcion:'', fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1)}];
+  experiencias = [{puesto: 'UNAM', empresa: 'Ingeniería',descripciones:[], fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1)}];
   conocimientos = [ { conocimiento: 'Angular' } ];
   skills = [{ skill: 'Trabajo en equipo' }];
   cursos = [{ nombre: 'Ingeniería',organizacion:'',descripcion:'', fechaIni: new Date(2010, 1, 1), fechaFin: new Date(2014, 1, 1), entidad: '', tiempoEstudio: ''}]
@@ -458,7 +458,7 @@ export class ComentariosComponent implements OnInit {
 
   buildData(conocimientos: any, habilidades: any) {
   return {
-    EtNom: this.apellido + ' ' + this.nombre,
+    EtNom: this.nombre + ' ' + this.apellido,
     EtNa: this.nacionalidad,
     EtId: this.idiomas,
     EtRe: this.ciudad + ', ' + this.pais,
@@ -508,7 +508,7 @@ export class ComentariosComponent implements OnInit {
       return {
         puesto: e.puesto,
         empresa: e.empresa,
-        descripcion: e.descripcion,
+        descripciones: e.descripciones,
         periodo: `${fechaInicio} - ${fechaFin}`
       };
     });
@@ -532,7 +532,8 @@ export class ComentariosComponent implements OnInit {
         descripcion: c.descripcion,
         entidad: c.entidad,
         tiempoEstudio: c.tiempoEstudio,
-        periodo: `${fechaInicio} - ${fechaFin}`
+        // periodo: `${fechaInicio} - ${fechaFin}`
+        periodo: `${fechaFin}`
       };
     });
   }

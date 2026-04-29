@@ -13,30 +13,31 @@
   <!-- Datos Personales -->
   <div class="section pdf-section">
     <h4>{{ languageTexts.datospersonales }}</h4>
-    <div class="detail">
-      <span>{{ languageTexts.apellidonombre }}: {{ apellido }} {{ nombre }}</span>
+    <div class="detail name-detail">
+      <span>{{  nombre || languageTexts.nombre }} {{ apellido || languageTexts.apellidos }}</span>
     </div>
     <div class="detail">
-      <span>{{ languageTexts.tiempoExperiencia }}: {{ tiempoExperiencia }}</span>
+      {{ languageTexts.tiempoExperiencia }}: <span class="detail yearsE-detail"> {{ tiempoExperiencia||'N°' }}</span>
     </div>
-    <div class="detail">
+    <!-- <div class="detail">
       <span>{{ languageTexts.nacionalidad }}: {{ nacionalidad }}</span>
-    </div>
+    </div> -->
     <div class="detail idiomas-detail">
-      <span>{{ languageTexts.idiomas }}:</span>
+      <span *ngIf="idiomas.length===0">{{ languageTexts.idiomas }}:</span>
       <ul>
         <li *ngFor="let idioma of idiomas">{{ idioma.idioma }} </li>
       </ul>
     </div>
-    <div class="detail">
+    <!-- <div class="detail">
       <span>{{ languageTexts.residenciaactual }}: {{ ciudad }} , {{' '+pais}}</span>
-    </div>
+    </div> -->
     <div class="detail">
-      <span>{{ languageTexts.edad }}: {{ edad }}</span>
+      <span>{{ edad }} {{languageTexts.year}}, {{ ciudad || languageTexts.ciudad }}, {{pais || languageTexts.pais}}.</span>
     </div>
+    <br>
     <!-- DESCRIPCIÓN CONCRETA DE TU EXPERIENCIA -->
     <div class="detail">
-      <span>{{ comentarios }}</span>
+      <span>{{ comentarios || languageTexts.comentarios }}</span>
     </div>
     
   </div>
@@ -46,9 +47,12 @@
     <h4>{{ languageTexts.estudioscursados }}</h4>
     <div *ngFor="let estudio of estudios" class="estudio">
       <div>
-        <span class="label">{{ estudio.universidad }}</span>
+        <span class="detail yearsE-detail">{{ estudio.universidad }}</span>
       </div>
       <div>
+        <span>{{ estudio.carrera }}-{{ estudio.fechaIni | date:'yyyy' }}-{{isToday(estudio.generacion) ? languageTexts.actualidad : (estudio.generacion | date:'yyyy')}}</span>
+      </div>
+      <!-- <div>
         <span>{{ languageTexts.carrera }}: <strong>{{ estudio.carrera }}</strong></span>
       </div>
       <div>
@@ -60,7 +64,7 @@
             {{ isToday(estudio.generacion) ? languageTexts.actualidad : (estudio.generacion | date:'yyyy') }}
           </strong>
         </span>
-      </div>
+      </div> -->
     </div>
   </div>
 
@@ -117,13 +121,13 @@
     <h4>{{ languageTexts.experiencialab }}</h4>
     <div *ngFor="let experiencia of experiencias" class="experience">
       <div>
-        <span>{{ languageTexts.puesto }}: <strong>{{ experiencia.puesto }}</strong></span>
+        <span><strong>{{ experiencia.puesto }}</strong></span>
       </div>
       <div>
-        <span>{{ languageTexts.empresa }}: <strong>{{ experiencia.empresa }}</strong></span>
+        <span><strong>{{ experiencia.empresa }}</strong></span>
       </div>
       <div>
-        <span>{{ languageTexts.fecha }}:
+        <span>
           <strong>
             {{ experiencia.fechaIni ? capitalizeFirstLetter(experiencia.fechaIni) : '' }} -
             {{ experiencia.fechaFin ? capitalizeFirstLetter(experiencia.fechaFin) : languageTexts.actualidad }}
@@ -153,17 +157,11 @@
     <h4>{{ languageTexts.otrosEstudios }}</h4>
     <div *ngFor="let curso of cursos" class="course">
       <div>
-        <span><strong>{{ curso.nombre }}</strong></span>
+        <span><strong> • {{ curso.nombre }}</strong>({{ curso.organizacion }}, {{ curso.fechaFin ? capitalizeFirstLetter(curso.fechaFin) : languageTexts.actualidad }})</span>
       </div>
-      <div>
-        <span><strong>{{ languageTexts.organizacion }}: {{ curso.organizacion }}</strong></span>
-      </div>
-      <div>
-        <span>
-          {{ capitalizeFirstLetter(curso.fechaIni) }} -
-          {{ curso.fechaFin ? capitalizeFirstLetter(curso.fechaFin) : languageTexts.actualidad }}
-        </span>
-      </div>
+      <!-- <div>
+        <span>{{ curso.organizacion }}</span>
+      </div> -->
       <div>
         <span>{{ languageTexts.descripcion }}: {{ curso.descripcion }}</span>
       </div>
@@ -172,7 +170,13 @@
       </div>
       <div>
         <span>{{ languageTexts.tiempodeEst }}: {{ curso.tiempoEstudio }}</span>
-      </div>
+      </div> 
+      <!-- <div>
+        <span>
+          {{ capitalizeFirstLetter(curso.fechaIni) }} -
+          {{ curso.fechaFin ? capitalizeFirstLetter(curso.fechaFin) : languageTexts.actualidad }}
+        </span>
+      </div>-->
     </div>
   </div>
 

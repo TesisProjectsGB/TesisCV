@@ -10,7 +10,7 @@
   padding-right: 0.5in;
   padding-bottom: 0.5in;
   box-sizing: border-box;
-  font-family: Arial, sans-serif; /* Fuente predeterminada */
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Fuente predeterminada */
   background-color: #fff; /* Fondo blanco */
   display: flex;
   flex-direction: column;
@@ -64,9 +64,10 @@
 
 .section h4, .conocimientos h4,.conocimientos2 h4,.skills2 h4, .skills h4 {
   color: #1d40cc;
-  font-family: "Merriweather", serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-weight: bold;
   font-size: 15px;
+  font-style: italic;
 }
 
 .section h4 {
@@ -164,8 +165,9 @@ h4::after {
   margin-bottom: 10px; /* Espaciado debajo del título */
   font-size: 15px;
   color: #1d40cc;
-  font-family: "Merriweather", serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-weight: bold;
+  font-style: italic;
 }
 
 /* Contenedor principal */
@@ -187,7 +189,8 @@ h4::after {
   margin-bottom: 10px;
   font-weight: bold;
   color: #1d40cc;
-  font-family: "Merriweather", serif;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-style: italic;
 }
 
 /* Configurar contenedor en cuadrícula */
@@ -241,4 +244,13 @@ h4::after {
   list-style: none; /* Elimina los puntos de la lista */
   column-count: 3; /* Número de columnas */
   column-gap: 20px; /* Espacio entre columnas */
+}
+
+.detail.name-detail {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.detail.yearsE-detail {
+  font-weight: bold;
 }
