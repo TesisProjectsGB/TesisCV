@@ -18,37 +18,37 @@ export class ConocimientosComponent implements OnInit, OnChanges {
   dataSource = new MatTableDataSource<ConocimientoElement>([]);
 
   conocimientosPLCs: ConocimientoElement[] = [
-    { conocimiento: 'SIEMENS (PLC)', position: 1 },
-    { conocimiento: 'ALLEN BRADLEY (PLC)', position: 2 },
-    { conocimiento: 'SCHNEIDER (PLC)', position: 3 },
-    { conocimiento: 'MITSUBISHI (PLC)', position: 4 },
-    { conocimiento: 'OMRON (PLC)', position: 5 },
+    { conocimiento: 'Siemens (PLC)', position: 1 },
+    { conocimiento: 'Allen Bradley (PLC)', position: 2 },
+    { conocimiento: 'Schneider  (PLC)', position: 3 },
+    { conocimiento: 'Mitsubishi (PLC)', position: 4 },
+    { conocimiento: 'Omron (PLC)', position: 5 },
     { conocimiento: 'ABB (PLC)', position: 6 },
     // Agrega más elementos según sea necesario
   ];
 
   conocimientosHMIs: ConocimientoElement[] = [
-    { conocimiento: 'SIEMENS (HMI)', position: 1 },
-    { conocimiento: 'ALLEN BRADLEY (HMI)', position: 2 },
-    { conocimiento: 'SCHNEIDER (HMI)', position: 3 },
+    { conocimiento: 'Siemens (HMI)', position: 1 },
+    { conocimiento: 'Allen Bradley (HMI)', position: 2 },
+    { conocimiento: 'Schneider (HMI)', position: 3 },
     // Agrega más elementos según sea necesario
   ];
 
   conocimientosDrivesServos: ConocimientoElement[] = [
-    { conocimiento: 'SIEMENS (Drive/Servo)', position: 1 },
-    { conocimiento: 'ALLEN BRADLEY (Drive/Servo)', position: 2 },
-    { conocimiento: 'SCHNEIDER (Drive/Servo)', position: 3 },
-    { conocimiento: 'YASKAWA (Drive/Servo)', position: 4 },
-    { conocimiento: 'LENZE (Drive/Servo)', position: 5 },
+    { conocimiento: 'Siemens (Drive/Servo)', position: 1 },
+    { conocimiento: 'Allen Bradley (Drive/Servo)', position: 2 },
+    { conocimiento: 'Schneider (Drive/Servo)', position: 3 },
+    { conocimiento: 'Yaskawa (Drive/Servo)', position: 4 },
+    { conocimiento: 'Lenze (Drive/Servo)', position: 5 },
     { conocimiento: 'ABB (Drive/Servo)', position: 6 },
     // Agrega más elementos según sea necesario
   ];
 
   conocimientosSoftware: ConocimientoElement[] = [
     { conocimiento: 'TIA Portal', position: 1 },
-    { conocimiento: 'STEP 7', position: 2 },
-    { conocimiento: 'WINCC', position: 3 },
-    { conocimiento: 'PCS7', position: 4 },
+    { conocimiento: 'Step 7', position: 2 },
+    { conocimiento: 'Wincc', position: 3 },
+    { conocimiento: 'Pcs7', position: 4 },
     { conocimiento: 'StartDrive', position: 5 },
     { conocimiento: 'Starter', position: 6 },
     { conocimiento: 'Studio5000', position: 7 },
@@ -71,7 +71,7 @@ export class ConocimientosComponent implements OnInit, OnChanges {
     { conocimiento: 'ST', position: 3 },
     { conocimiento: 'IL', position: 4 },
     { conocimiento: 'SFC', position: 5 },
-    { conocimiento: 'GRAFCET', position: 6 },
+    { conocimiento: 'Grafcet', position: 6 },
     // Agrega más elementos según sea necesario
   ];
 
@@ -79,7 +79,7 @@ export class ConocimientosComponent implements OnInit, OnChanges {
     { conocimiento: 'MySQL', position: 1 },
     { conocimiento: 'PostgreSQL', position: 2 },
     { conocimiento: 'Oracle', position: 3 },
-    { conocimiento: 'SQL Server', position: 4 },
+    { conocimiento: 'Sql Server', position: 4 },
     { conocimiento: 'MongoDB', position: 5 },
     { conocimiento: 'Python', position: 6 },
     { conocimiento: 'C#', position: 7 },
