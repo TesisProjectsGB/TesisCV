@@ -104,7 +104,7 @@ interface LanguageText {
   descripcionLaboralplaceholder: string,
   formatos:string,
   formato1:string,
-  // formato2:string,
+  formato2:string,
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -248,6 +248,7 @@ export class LanguageService {
       descripcionLaboralplaceholder: "Describe your duties, achievements, or responsibilities in this position",
       formatos:"Document format",
       formato1:"Format 1",
+      formato2:"Format 2",
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -377,7 +378,8 @@ export class LanguageService {
       btnDescripcionLaboral: "Agregar descripción",
       descripcionLaboralplaceholder: "Describe tus funciones, logros o responsabilidades en este puesto",
       formatos:"Formato del documento",
-      formato1:"Formato 1"
+      formato1:"Formato 1",
+      formato2:"Formato 2",
     }
     // Agrega más idiomas según sea necesario
   };

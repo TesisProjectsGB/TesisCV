@@ -37,6 +37,9 @@
         <mat-option value="Formato 1">
           {{ languageTexts.formato1 }}
         </mat-option>
+        <mat-option value="Formato 2">
+          {{ languageTexts.formato2 }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -51,7 +54,7 @@
         <mat-option value="Diseño de una columna">
           {{ languageTexts.estilo1 }}
         </mat-option>
-        <mat-option value="Diseño de dos columnas">
+        <mat-option *ngIf="formatoHoja !== 'Formato 2'" value="Diseño de dos columnas">
           {{ languageTexts.estilo2 }}
         </mat-option>
       </mat-select>

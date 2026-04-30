@@ -411,11 +411,11 @@ export class ComentariosComponent implements OnInit {
           : 'assets/PlantillaUnoEng.docx';
       }
 
-      // if (this.formatoHoja === 'Formato 2') {
-      //   return isES
-      //     ? 'assets/PlantillaUnoFormato2.docx'
-      //     : 'assets/PlantillaUnoFormato2Eng.docx';
-      // }
+      if (this.formatoHoja === 'Formato 2') {
+        return isES
+          ? 'assets/PlantillaUnoFormato2.docx'
+          : 'assets/PlantillaUnoFormato2Eng.docx';
+      }
     }else{
       if (this.formatoHoja === 'Formato 1') {
         return isES
