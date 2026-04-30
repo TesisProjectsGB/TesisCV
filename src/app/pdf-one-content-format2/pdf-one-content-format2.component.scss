@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+/* Establecer el contenedor de tamaño carta */
+.cv-container {
+  width: 8.5in;    /* Ancho de carta */
+  height: 11in;    /* Alto de carta */
+  padding-top: 0.1in;  /* Reducir espaciado dentro del contenedor a 0.5in */
+  padding-left: 0.5in;
+  padding-right: 0.5in;
+  padding-bottom: 0.5in;
+  box-sizing: border-box;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; /* Fuente predeterminada */
+  background-color: #fff; /* Fondo blanco */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 0;
+}
+
+/* Asegura que el texto largo se ajuste y baje a la siguiente línea */
+.cv-container,
+.section,
+.conocimientos2,
+.skills2,
+.estudio {
+  word-wrap: break-word; /* Romper las palabras largas si es necesario */
+  overflow-wrap: break-word; /* También asegura que el texto se divida si es necesario */
+}
+
+/* Si deseas controlar el ajuste de texto específicamente dentro de los detalles */
+.detail span {
+  white-space: normal; /* Permite que el texto fluya y se ajuste */
+}
+
+
+/* Ajustar el logo en el encabezado */
+.header {
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  // margin: 0; /* Eliminar márgenes del encabezado */
+  // padding: 0;
+  font-size: 14px; /* Reducir el tamaño de la fuente */
+  font-family: 'Libre Franklin', sans-serif;
+  color: #31DCFE;
+  font-weight: bold;
+  text-align: right;
+}
+
+.logo {
+  max-height: 80px; /* Reducir el tamaño del logo */
+}
+
+/* Títulos y secciones */
+.cv-title {
+  text-align: left;
+  margin-bottom: 1px;
+}
+
+.cv-title label {
+  font-size: 16px;
+  font-family: 'Libre Franklin', sans-serif;
+}
+
+.section h4, .conocimientos h4,.conocimientos2 h4,.skills2 h4, .skills h4 {
+  color: #1d40cc;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-weight: bold;
+  font-size: 15px;
+  font-style: italic;
+}
+
+.section h4 {
+  margin-bottom: 10px;
+}
+
+/* Detalles de cada sección */
+.detail {
+  margin-bottom: 5px;
+}
+
+/* Conocimientos y Skills en columnas */
+/* Contenedor de conocimientos y skills */
+.skills-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cuando hay menos de 14 elementos, los conocimientos y skills se muestran en columnas */
+.skills-section.two-columns {
+  display: flex;  /* Usamos flexbox para colocar los elementos en la misma fila */
+  flex-wrap: wrap;
+  gap: 20px; /* Espacio entre conocimientos y habilidades */
+  justify-content: space-between;
+}
+
+/* Asegurarse de que ambos, conocimientos y skills, tengan el mismo tamaño */
+.skills-section.two-columns .conocimientos,
+.skills-section.two-columns .skills {
+  flex: 1 1 48%;  /* Ambas ocupan 48% del espacio disponible */
+  box-sizing: border-box; /* Asegura que el padding y el borde se cuenten dentro del tamaño */
+  max-width: 48%; /* Limitar el ancho máximo para evitar que se desborden */
+  width: 100%;  /* Asegura que ocupen el 100% del espacio disponible dentro de sus contenedores */
+}
+
+/* Estilos adicionales para mejorar la legibilidad */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+/* Estilo para la línea arriba de cada h4 */
+h4 {
+  position: relative;
+  padding-top: 4px;    /* Espacio entre la línea y el texto */
+  margin-top: 20px;    /* Espacio arriba */
+}
+
+/* Línea arriba */
+h4::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;         /* ancho completo */
+  height: 1px;         /* grosor */
+  background-color: #000;
+}
+
+/* Contenedor principal con flexbox para columnas */
+.skills-section-columns {
+  display: flex;
+  flex-wrap: nowrap; /* Evita que las columnas se envuelvan a otra fila */
+  justify-content: space-between; /* Espaciado entre las columnas */
+  gap: 20px; /* Espaciado entre columnas */
+}
+
+/* Estilo para las columnas individuales */
+.skills-section-columns .column {
+  flex: 1 1 48%; /* Cada columna ocupa aproximadamente el 48% del contenedor */
+  box-sizing: border-box; /* Incluye padding y borde en el tamaño total */
+  max-width: 48%; /* Limita el ancho máximo */
+}
+
+/* Listas dentro de las columnas */
+.conocimientos-list,
+.skills-list {
+  list-style-type: disc; /* Lista con viñetas */
+  padding-left: 20px; /* Indentación para las viñetas */
+  margin: 0;
+}
+
+.conocimientos-list li,
+.skills-list li {
+  margin-bottom: 8px; /* Espacio entre elementos de la lista */
+}
+
+/* Títulos dentro de las columnas */
+.skills-section-columns h4 {
+  margin-bottom: 10px; /* Espaciado debajo del título */
+  font-size: 15px;
+  color: #1d40cc;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Contenedor principal */
+.knowledge-and-skills {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px; /* Espaciado entre filas de conocimientos y habilidades */
+}
+
+/* Fila de conocimientos y habilidades */
+.knowledge-row,
+.skills-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.knowledge-row h4,
+.skills-row h4 {
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #1d40cc;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-style: italic;
+}
+
+/* Configurar contenedor en cuadrícula */
+.knowledge-columns,
+.skills-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas de igual tamaño */
+  column-gap: 20px; /* Espaciado entre columnas */
+  row-gap: 1px; /* Espaciado entre filas */
+}
+
+/* Estilo para los elementos de cada columna */
+.knowledge-column,
+.skills-column {
+  padding-left: 20px;
+  margin: 0;
+}
+
+/* Aplicar puntitos a la lista */
+.knowledge-column ul,
+.skills-column ul {
+  list-style-type: disc; /* Mostrar puntitos */
+  padding-left: 10px; /* Espaciado entre el borde y el contenido de la lista */
+  margin: 0;
+}
+
+/* Estilo de cada ítem de la lista */
+.knowledge-column li,
+.skills-column li {
+  margin-bottom: 5px; /* Espaciado entre los elementos de la lista */
+  color: #333; /* Color de texto */
+}
+
+/* Alinear correctamente los elementos en la última fila */
+.knowledge-columns::after,
+.skills-columns::after {
+  content: ''; /* Añadir elementos ficticios */
+  grid-column: span 1; /* Ocupa una columna */
+  visibility: hidden; /* No visible pero ocupa espacio */
+}
+
+.detail.idiomas-detail {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.detail.idiomas-detail ul {
+  margin: 0;
+  padding: 0;
+  list-style: none; /* Elimina los puntos de la lista */
+  column-count: 3; /* Número de columnas */
+  column-gap: 20px; /* Espacio entre columnas */
+}
+
+.detail.name-detail {
+  font-weight: bold;
+  font-size: 17px;
+}
+
+.detail.yearsE-detail {
+  font-weight: bold;
+}
+
+
+.header-cv {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px 20px 20px 80px; /* espacio para el círculo */
+}
+
+/* Medio círculo */
+.header-cv::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 120px;
+  background-color: #1e73be;
+  border-radius: 0 60px 60px 0; /* forma de medio círculo */
+}
+
+/* Nombre */
+.left .name {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1e73be;
+}
+
+/* Lado derecho */
+.right {
+  text-align: right;
+  font-size: 14px;
+  color: #1e73be;
+  line-height: 1.6;
+}
+
+.row-estudio {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.row-estudio .left {
+  text-align: left;
+  color: #000;
+  font-weight: bold;
+}
+
+.row-estudio .right {
+  text-align: right;
+  white-space: nowrap; /* evita que se rompa la fecha */
+  color: #000;
+  font-weight: bold;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.cv-title2 {
+  text-align: right;
+  margin-bottom: 1px;
+}

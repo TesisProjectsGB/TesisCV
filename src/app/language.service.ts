@@ -105,6 +105,9 @@ interface LanguageText {
   formatos:string,
   formato1:string,
   formato2:string,
+  objetivo:string,
+  educacion:string,
+  aptitudes:string,
   // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario
 }
 
@@ -249,6 +252,9 @@ export class LanguageService {
       formatos:"Document format",
       formato1:"Format 1",
       formato2:"Format 2",
+      objetivo:"OBJECTIVE",
+      educacion:"EDUCATION",
+      aptitudes:"SKILLS"
       // Agrega más claves y valores según sea necesario para otros elementos de la interfaz de usuario en inglés
     },
     es: {
@@ -380,6 +386,9 @@ export class LanguageService {
       formatos:"Formato del documento",
       formato1:"Formato 1",
       formato2:"Formato 2",
+      objetivo:"OBJETIVO",
+      educacion:"EDUCACIÓN",
+      aptitudes:"APTITUDES"
     }
     // Agrega más idiomas según sea necesario
   };

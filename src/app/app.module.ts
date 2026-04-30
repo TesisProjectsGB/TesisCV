@@ -36,6 +36,7 @@ import { CvModalComponent } from './cv-modal/cv-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PdfOneContentComponent } from './pdf-one-content/pdf-one-content.component';
 import { PdfTwoContentComponent } from './pdf-two-content/pdf-two-content.component';
+import { PdfOneContentFormat2Component } from './pdf-one-content-format2/pdf-one-content-format2.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { PdfTwoContentComponent } from './pdf-two-content/pdf-two-content.compon
     CvModalComponent,
     PdfOneContentComponent,
     PdfTwoContentComponent,
+    PdfOneContentFormat2Component,
   ],
   imports: [
     BrowserModule,
